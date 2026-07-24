@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.5.0](https://github.com/radicallyopensecurity/pentext/compare/2.4.0...2.5.0) (2026-07-24)
+
+
+### Features
+
+* don't show finding status field when status equals 'none' ([7c77192](https://github.com/radicallyopensecurity/pentext/commit/7c771923ab72967a50be874ef86dd21a3f9cb26c))
+
+
+### Bug Fixes
+
+* **dtd:** correct schema gaps so valid documents validate ([8cb666d](https://github.com/radicallyopensecurity/pentext/commit/8cb666de9e23549fe7dc8e5c1ff9c5d90c92ce60))
+* ensure empty status does not show up in finding summary ([82f6788](https://github.com/radicallyopensecurity/pentext/commit/82f6788f16088f8489ef783d419b6a839437aea9))
+* **sample-report:** correct the spearphishing finding id ([246698c](https://github.com/radicallyopensecurity/pentext/commit/246698c253e5bc1ef7749e9fe126b963e0611ad1))
+* **templates:** make finding templates and example validate against the schema ([2467d16](https://github.com/radicallyopensecurity/pentext/commit/2467d16e242063f6bfff3591113f1325e18d2717))
+
 ## [2.4.0](https://github.com/radicallyopensecurity/pentext/compare/2.3.0...2.4.0) (2025-09-29)
 
 
