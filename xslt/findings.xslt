@@ -175,7 +175,7 @@
                         Update
                     </fo:inline>
                 </xsl:when>
-            </xsl:choose>
+                </xsl:choose>
                 <xsl:if test="@date">
                     <xsl:text> </xsl:text>
                     <fo:inline xsl:use-attribute-sets="status-tag">

@@ -2,8 +2,9 @@
 <xsl:stylesheet
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  exclude-result-prefixes="xs"
+  exclude-result-prefixes="xs my"
   xmlns:fo="http://www.w3.org/1999/XSL/Format"
+  xmlns:my="http://www.radical.sexy"
   version="2.0"
 >
 
@@ -146,10 +147,7 @@
     </xsl:template>
 
     <xsl:template name="findingsSummaryContent">
-        <fo:table-row
-      xsl:use-attribute-sets="TableFont"
-      keep-together.within-column="always"
-    >
+        <fo:table-row xsl:use-attribute-sets="TableFont" keep-together.within-column="always">
             <xsl:if test="position() mod 2 != 0">
                 <xsl:attribute name="background-color">#ededed</xsl:attribute>
             </xsl:if>
@@ -185,40 +183,36 @@
    
                 <!-- Status Section -->
                 <xsl:if test="@status and @status != 'none' and @status != ''">
-                  
+                    <xsl:variable name="prettyStatus">
+                        <xsl:sequence
+                            select="string-join(for $x in tokenize(@status, '_') return my:titleCase($x), ' ')"
+                        />
+                    </xsl:variable>
                     <fo:block>
-                        <fo:inline
-              xsl:use-attribute-sets="bold"
-            >Status: </fo:inline>
+                        <fo:inline xsl:use-attribute-sets="bold">Status: </fo:inline>
                         <xsl:choose>
-                            <xsl:when
-                test="@status = 'new' or @status = 'unresolved'"
-              >
+                            <xsl:when test="@status = 'new' or @status = 'unresolved'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
                                         <xsl:value-of select="$color_new" />
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:when test="@status = 'not_retested'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
-                                        <xsl:value-of
-                      select="$color_notretested"
-                    />
+                                        <xsl:value-of select="$color_notretested"/>
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:when test="@status = 'resolved'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
-                                        <xsl:value-of
-                      select="$color_resolved"
-                    />
+                                        <xsl:value-of select="$color_resolved"/>
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:otherwise>
@@ -342,10 +336,7 @@
     </xsl:template>
 
     <xsl:template name="recommendationsSummaryContent">
-        <fo:table-row
-      xsl:use-attribute-sets="TableFont"
-      keep-together.within-column="always"
-    >
+        <fo:table-row xsl:use-attribute-sets="TableFont" keep-together.within-column="always">
             <xsl:if test="position() mod 2 != 0">
                 <xsl:attribute name="background-color">#ededed</xsl:attribute>
             </xsl:if>
@@ -371,55 +362,50 @@
                                     <xsl:value-of select="@threatLevel" />
                                 </xsl:when>
                             </xsl:choose>
-                        </fo:inline>                            
+                        </fo:inline>
                     </fo:block>
                 </xsl:if>
 
                 <!-- Type -->
                 <xsl:if test="@type">
                     <fo:block>
-                        <fo:inline
-              xsl:use-attribute-sets="bold"
-            >Type: </fo:inline>
+                        <fo:inline xsl:use-attribute-sets="bold">Type: </fo:inline>
                         <xsl:value-of select="@type" />
                     </fo:block>
                 </xsl:if>
 
-                <!-- Status -->
-                <xsl:if test="@status and @status != 'none'">
+                <!-- Status Section -->
+                <xsl:if test="@status and @status != 'none' and @status != ''">
+                    <xsl:variable name="prettyStatus">
+                        <xsl:sequence
+                            select="string-join(for $x in tokenize(@status, '_') return my:titleCase($x), ' ')"
+                        />
+                    </xsl:variable>
                     <fo:block>
-                        <fo:inline
-              xsl:use-attribute-sets="bold"
-            >Status: </fo:inline>
+                        <fo:inline xsl:use-attribute-sets="bold">Status: </fo:inline>
                         <xsl:choose>
-                            <xsl:when
-                test="@status = 'new' or @status = 'unresolved'"
-              >
+                            <xsl:when test="@status = 'new' or @status = 'unresolved'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
                                         <xsl:value-of select="$color_new" />
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:when test="@status = 'not_retested'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
-                                        <xsl:value-of
-                      select="$color_notretested"
-                    />
+                                        <xsl:value-of select="$color_notretested"/>
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:when test="@status = 'resolved'">
                                 <fo:inline>
                                     <xsl:attribute name="color">
-                                        <xsl:value-of
-                      select="$color_resolved"
-                    />
+                                        <xsl:value-of select="$color_resolved"/>
                                     </xsl:attribute>
-                                    <xsl:value-of select="@status" />
+                                    <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
                             <xsl:otherwise>
@@ -437,19 +423,14 @@
                         <xsl:for-each select="labels/label">
                             <fo:inline xsl:use-attribute-sets="label">
                                 <xsl:attribute name="background-color">
-                                    <xsl:value-of
-                    select="/pentest_report/meta/labels/label[@name = current()]/@color"
-                  />
+                                    <xsl:value-of select="/pentest_report/meta/labels/label[@name = current()]/@color"/>
                                 </xsl:attribute>
                                 <xsl:attribute name="color">
-                                    <xsl:value-of
-                    select="/pentest_report/meta/labels/label[@name = current()]/@text"
-                  />
+                                    <xsl:value-of select="/pentest_report/meta/labels/label[@name = current()]/@text"/>
                                 </xsl:attribute>
                                 <xsl:value-of select="." />
                             </fo:inline>
-                            <xsl:text
-              > </xsl:text> <!-- Add space between labels -->
+                            <xsl:text> </xsl:text> <!-- Add space between labels -->
                         </xsl:for-each>
                     </fo:block>
                 </xsl:if>
