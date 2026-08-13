@@ -215,6 +215,14 @@
                                     <xsl:value-of select="$prettyStatus" />
                                 </fo:inline>
                             </xsl:when>
+                            <xsl:when test="@status = 'wont_fix'">
+                                <fo:inline>
+                                    <xsl:attribute name="color">
+                                        <xsl:value-of select="$color_wontfix"/>
+                                    </xsl:attribute>
+                                    <xsl:value-of select="$prettyStatus"/>
+                                </fo:inline>
+                            </xsl:when>
                             <xsl:otherwise>
                                 <fo:inline>
                                     <xsl:value-of select="@status" />
@@ -406,6 +414,14 @@
                                         <xsl:value-of select="$color_resolved"/>
                                     </xsl:attribute>
                                     <xsl:value-of select="$prettyStatus" />
+                                </fo:inline>
+                            </xsl:when>
+                            <xsl:when test="@status = 'wont_fix'">
+                                <fo:inline>
+                                    <xsl:attribute name="color">
+                                        <xsl:value-of select="$color_wontfix"/>
+                                    </xsl:attribute>
+                                    <xsl:value-of select="$prettyStatus"/>
                                 </fo:inline>
                             </xsl:when>
                             <xsl:otherwise>

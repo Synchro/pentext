@@ -626,6 +626,11 @@
                                     <xsl:value-of select="$prettyStatus"/>
                                 </span>
                             </xsl:when>
+                            <xsl:when test="@status = 'wont_fix'">
+                                <span class="status-wont_fix">
+                                    <xsl:value-of select="$prettyStatus"/>
+                                </span>
+                            </xsl:when>
                         </xsl:choose>
                     </div>
                 </xsl:if>

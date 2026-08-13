@@ -53,6 +53,7 @@
     <xsl:variable name="color_new">#CC4900</xsl:variable>
     <xsl:variable name="color_unresolved">#FF5C00</xsl:variable>
     <xsl:variable name="color_notretested">#FE9920</xsl:variable>
+    <xsl:variable name="color_wontfix">#333333</xsl:variable>
     <xsl:variable name="color_resolved">#15B01A</xsl:variable>
 
     <!-- generic pie chart colors -->
@@ -319,6 +320,9 @@
             </xsl:when>
             <xsl:when test="$label = 'not_retested'">
                 <xsl:value-of select="$color_notretested"/>
+            </xsl:when>
+            <xsl:when test="$label = 'wont_fix'">
+                <xsl:value-of select="$color_wontfix"/>
             </xsl:when>
             <xsl:when test="$label = 'resolved'">
                 <xsl:value-of select="$color_resolved"/>

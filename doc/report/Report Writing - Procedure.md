@@ -332,7 +332,7 @@ A finding consists of a `<finding>` element with the following attributes:
 There are two optional fields:
 
 - `status`, which can denote whether the finding is `new`, `unresolved`,
-  `not_retested` or `resolved`.
+  `not_retested`, `resolved`, or `wont_fix`.
 - `prefix`, to add a prefix to a finding identifier.
 
 Furthermore, the `<finding>` is made up of several sub-elements:

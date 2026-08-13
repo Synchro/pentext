@@ -16,7 +16,10 @@
     <xsl:attribute-set name="status-not_retested">
         <xsl:attribute name="color"><xsl:value-of select="$color_notretested"/></xsl:attribute>
     </xsl:attribute-set>
-    
+    <xsl:attribute-set name="status-wont_fix">
+        <xsl:attribute name="color"><xsl:value-of select="$color_wontfix"/></xsl:attribute>
+    </xsl:attribute-set>
+
     <!-- Status tags -->
     <xsl:attribute-set name="status-tag">
         <xsl:attribute name="background-color"><xsl:value-of select="$c_support_light"/></xsl:attribute>

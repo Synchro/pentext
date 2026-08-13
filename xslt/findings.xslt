@@ -32,7 +32,7 @@
                         </fo:block>
                     </fo:table-cell>
                     <xsl:if
-                        test="@status = 'new' or @status = 'resolved' or @status = 'unresolved' or @status = 'not_retested'">
+                        test="@status = 'new' or @status = 'resolved' or @status = 'unresolved' or @status = 'not_retested' or @status = 'wont_fix'">
                         <fo:table-cell xsl:use-attribute-sets="td">
                             <fo:block xsl:use-attribute-sets="finding-meta">
                                 <fo:inline xsl:use-attribute-sets="bold">Status: </fo:inline>
@@ -49,6 +49,11 @@
                                     </xsl:when>
                                     <xsl:when test="@status = 'resolved'">
                                         <fo:inline xsl:use-attribute-sets="status-resolved">
+                                            <xsl:value-of select="$prettyStatus"/>
+                                        </fo:inline>
+                                    </xsl:when>
+                                    <xsl:when test="@status = 'wont_fix'">
+                                        <fo:inline xsl:use-attribute-sets="status-wont_fix">
                                             <xsl:value-of select="$prettyStatus"/>
                                         </fo:inline>
                                     </xsl:when>
@@ -157,7 +162,7 @@
 
     <xsl:template match="update" name="update">
         <xsl:if
-            test="../@status = 'resolved' or ../@status = 'unresolved' or ../@status = 'not_retested'">
+            test="../@status = 'resolved' or ../@status = 'unresolved' or ../@status = 'not_retested' or ../@status = 'wont_fix'">
             <fo:block xsl:use-attribute-sets="title-findingsection">
                 <xsl:choose>
                 <xsl:when test="../@status = 'unresolved'">
@@ -172,6 +177,11 @@
                 </xsl:when>
                 <xsl:when test="../@status = 'resolved'">
                     <fo:inline xsl:use-attribute-sets="status-resolved">
+                        Update
+                    </fo:inline>
+                </xsl:when>
+                <xsl:when test="../@status = 'wont_fix'">
+                    <fo:inline xsl:use-attribute-sets="status-wont_fix">
                         Update
                     </fo:inline>
                 </xsl:when>
