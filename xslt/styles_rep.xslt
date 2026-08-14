@@ -16,8 +16,8 @@
     <xsl:attribute-set name="status-not_retested">
         <xsl:attribute name="color"><xsl:value-of select="$color_notretested"/></xsl:attribute>
     </xsl:attribute-set>
-    <xsl:attribute-set name="status-wont_fix">
-        <xsl:attribute name="color"><xsl:value-of select="$color_wontfix"/></xsl:attribute>
+    <xsl:attribute-set name="status-accepted_risk">
+        <xsl:attribute name="color"><xsl:value-of select="$color_acceptedrisk"/></xsl:attribute>
     </xsl:attribute-set>
 
     <!-- Status tags -->

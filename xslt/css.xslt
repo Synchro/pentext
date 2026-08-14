@@ -602,8 +602,8 @@ there.
     color: <xsl:value-of select="$color_notretested"/>;
 }
 
-.status-wont_fix {
-    color: <xsl:value-of select="$color_wontfix"/>;
+.status-accepted_risk {
+    color: <xsl:value-of select="$color_acceptedrisk"/>;
 }
 
 .status-resolved {
